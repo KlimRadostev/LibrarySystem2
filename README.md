@@ -1,24 +1,25 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Class structure
 
-Things you may want to cover:
+### Author Class
+name: string  
+image_url: string  
+slug: string  
+  
+has_many :publishes  
+has_many :books, through: :publishes  
 
-* Ruby version
+### Book Class
+title: string  
+description: string  
+image_url: string  
+  
+has_many :publishes  
+has_many :authors, through: :publishes  
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### Publish Class
+belongs_to :author  
+belongs_to :book  
+  
+Used the following structure because a book could have many authors and an author can have many books. 
